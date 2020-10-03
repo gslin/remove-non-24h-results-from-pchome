@@ -3,7 +3,7 @@
 // @namespace   https://github.com/gslin/remove-non-24h-results-from-pchome
 // @match       https://ecshweb.pchome.com.tw/search/*
 // @grant       none
-// @version     0.20200925.0
+// @version     0.20201004.0
 // @author      Gea-Suan Lin <gslin@gslin.org>
 // @description Remove non-24h results on PChome search page.
 // @license     MIT
@@ -15,6 +15,22 @@
     let sheet = document.createElement('style');
     sheet.innerHTML = '.result_mall {display:none;}';
     document.getElementsByTagName('head')[0].appendChild(sheet);
+
+    let toolbar = document.createElement('span');
+    toolbar.innerHTML = ' <button id="toggle_mall">Toggle mall</button>';
+    let el = document.querySelector('.Cm_N .bar_spinbtn');
+    if (!el) {
+        return;
+    }
+    el.appendChild(toolbar);
+
+    document.getElementById('toggle_mall').addEventListener('click', function(){
+        if ('' === sheet.innerHTML) {
+            sheet.innerHTML = '.result_mall {display:none;}';
+        } else {
+            sheet.innerHTML = '';
+        }
+    });
 
     let content = document.getElementById('CONTENT');
     let selector = '.col3f:has(button[_value="mall"])';
