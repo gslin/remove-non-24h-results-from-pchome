@@ -3,7 +3,7 @@
 // @namespace   https://github.com/gslin/remove-non-24h-results-from-pchome
 // @match       https://ecshweb.pchome.com.tw/search/*
 // @grant       none
-// @version     0.20201004.0
+// @version     0.20201209.0
 // @author      Gea-Suan Lin <gslin@gslin.org>
 // @description Remove non-24h results on PChome search page.
 // @license     MIT
@@ -26,7 +26,7 @@
 
     document.getElementById('toggle_mall').addEventListener('click', function(){
         if ('' === sheet.innerHTML) {
-            sheet.innerHTML = '.result_mall {display:none;}';
+            sheet.innerHTML = '.result_mall {opacity:0.33;}';
         } else {
             sheet.innerHTML = '';
         }
